@@ -2,7 +2,7 @@
 
 ---
 
-## 📌 1. Distribuição Normal / Gaussiana
+## 📌 1. Distribuição Normal ou Gaussiana
 
 A **distribuição normal**, também chamada de **distribuição gaussiana**, é uma das distribuições de probabilidade mais importantes em estatística e machine learning.  
 Ela descreve dados que se concentram em torno de uma **média**, formando o clássico **"sino"** quando representada graficamente.
