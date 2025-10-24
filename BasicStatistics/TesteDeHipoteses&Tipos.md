@@ -4,6 +4,7 @@
 
 Útil com amostras pequenas ou quando o desvião padrão é desconhecido
 
+Sumary:
 1. [T-test](#t-test)  
 2. [Z-test](#z-test)  
 3. [Qui-Quadrado test](#qui-quadrado-test)  
