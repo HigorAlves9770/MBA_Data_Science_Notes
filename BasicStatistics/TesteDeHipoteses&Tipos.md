@@ -4,6 +4,11 @@
 
 Útil com amostras pequenas ou quando o desvião padrão é desconhecido
 
+1. [T-test](#t-test)  
+2. [Z-test](#z-test)  
+3. [Qui-Quadrado test](#qui-quadrado-test)  
+4. [ANOVA test](#anova-test)  
+
 ---
 
 ## ⚙️ Etapas do Teste
@@ -38,7 +43,7 @@ Escolha o **teste estatístico adequado** com base no tipo de dados e na questã
 
 ---
 
-# 1️⃣ T-test
+# <a id="t-test"></a>1️⃣ T-test
 
 O **teste t** é um teste estatístico usado para determinar se há **diferença significativa entre dois grupos** ou entre **a média de uma amostra e um valor conhecido**.
 
@@ -131,7 +136,7 @@ t = -0.211 | p-value = 0.839 <br>
 <br>
 O p-valor = 0.839 é muito maior que 0.05, portanto não há diferença estatisticamente significativa entre os grupos.
 
-# 2️⃣ Z-test
+# <a id="z-test"></a>2️⃣ Z-test
 
 **É usado quando o tamanho da amostra é grande. Em grandes amostras, a distribuição amostra é normal da média, o que justifica o uso do Z-test**
 
@@ -144,9 +149,9 @@ OBS: O teorema do limite central: Garante que para uma amostra grande a distribu
 | Distribution          | T-Distribution      | Normal distribution             |
 | Application           | Small sample studies| Large sample studies            |
 
-# 3️⃣ Qui-quadrado
+# <a id="qui-quadrado-test"></a>3️⃣ Qui-Quadrado test
 
-# 4️⃣ ANOVA Test (Análise de Variância)
+# <a id="anova-test"></a>4️⃣ ANOVA test
 
 | Aspect                | T-test               | Z-test                         | Qui-quadrado                 | ANOVA                            |
 |---------------------------|------------------------|-----------------------------------|----------------------------------|-------------------------------------|
@@ -157,7 +162,7 @@ OBS: O teorema do limite central: Garante que para uma amostra grande a distribu
 
 ---
 
-## 🧮 One-Way ANOVA
+### 🧮 One-Way ANOVA
 
 **ANOVA** stands for **Analysis of Variance**, a statistical test used to compare the means of three or more groups. It analyzes the variance **within the group** and **between groups**. The primary objective is to assess whether the observed variance between group means is more significant than within the groups.
 
@@ -173,7 +178,7 @@ If the **F-statistic** is sufficiently large, it indicates that **at least one o
 
 ---
 
-## 🧮 Two-Way ANOVA
+### 🧮 Two-Way ANOVA
 
 **ANOVA** stands for **Analysis of Variance**, a statistical test used to compare the means of groups based on **two independent variables**. It analyzes the variance **within the group** and **between groups**, considering the effects of each factor and their possible **interaction effect**. The primary objective is to assess whether the observed variance between group means is more significant than within the groups.
 
