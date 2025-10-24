@@ -145,11 +145,100 @@ OBS: O teorema do limite central: Garante que para uma amostra grande a distribu
 
 # 3️⃣ Qui-quadrado
 
-# 4️⃣ Anova Test (Análise de Variância)
+# 4️⃣ ANOVA Test (Análise de Variância)
 
 | Aspect                | T-test               | Z-test                         | Qui-quadrado                 | ANOVA                            |
-|-----------------------|--------------------|--------------------------------|-----------------------------|---------------------------------|
-| Sample size           | Small               | Large                          | Large                       | Varies (2 or more groups)       |
-| Population variance   | Unknown             | Known                          | Not applicable              | Unknown                         |
-| Distribution          | T-Distribution      | Normal distribution            | Chi-square distribution     | F-Distribution                  |
-| Application           | Small sample studies| Large sample studies (Known variance) | Categorical data analysis  | Compare means of multiple group
+|---------------------------|------------------------|-----------------------------------|----------------------------------|-------------------------------------|
+| Sample size            | Small                  | Large                             | Large                            | Varies (2 or more groups)          |
+| Population variance    | Unknown                | Known                             | Not applicable                   | Unknown                            |
+| Distribution           | T-Distribution         | Normal distribution               | Chi-square distribution          | F-Distribution                     |
+| Application            | Small sample studies   | Large sample studies (Known variance) | Categorical data analysis     | Compare means of multiple groups   |
+
+---
+
+## 🧮 One-Way ANOVA
+
+**ANOVA** stands for **Analysis of Variance**, a statistical test used to compare the means of three or more groups. It analyzes the variance **within the group** and **between groups**. The primary objective is to assess whether the observed variance between group means is more significant than within the groups.
+
+📊 **Formula:**
+
+F = Mean Square Between Groups\Mean Square Within Groups
+
+### 🔹 Types of Variation:
+- 🔸 **Between-group variation** (due to the factor)  
+- 🔹 **Within-group variation** (due to random error)
+
+If the **F-statistic** is sufficiently large, it indicates that **at least one of the group means** is significantly different from the others.
+
+---
+
+## 🧮 Two-Way ANOVA
+
+**ANOVA** stands for **Analysis of Variance**, a statistical test used to compare the means of groups based on **two independent variables**. It analyzes the variance **within the group** and **between groups**, considering the effects of each factor and their possible **interaction effect**. The primary objective is to assess whether the observed variance between group means is more significant than within the groups.
+
+📊 **Formula:**
+
+F = Mean Square Between Groups\Mean Square Within Groups
+
+### 🔹 Types of Variation:
+- **Main effect of Factor A** (due to the first independent variable)  
+- **Main effect of Factor B** (due to the second independent variable)  
+- **Interaction effect (A × B)** (how the two factors combined affect the outcome)  
+- **Within-group variation** (due to random error)
+
+If the **F-statistic** is sufficiently large for any of the effects, it indicates that there is a **significant difference** related to that factor or interaction.
+
+---
+
+## 🧪 Practical Example with one way ANOVA
+
+Imagine you’re evaluating the effect of three types of diet on weight loss among a group of people:
+
+🥩 **Diet A:** High-protein  
+🍞 **Diet B:** High-carbohydrate  
+🥗 **Diet C:** Mediterranean  
+
+We want to know whether the type of diet actually affects the average weight loss after a certain period.
+
+### Hypotheses
+
+- **H₀ (Null hypothesis):** The mean weight loss is equal across the three diet groups.  
+- **H₁ (Alternative hypothesis):** At least one group’s mean differs significantly.
+
+The **one-way ANOVA** is the right choice here because we have **one independent variable** (type of diet) with **three groups** and **one dependent variable** (weight loss).
+
+If the result is statistically significant (**p < 0.05**), we can conclude that **at least one diet is more effective than the others**.
+---
+
+## 🔬 Pratical example with Two-Way ANOVA
+
+Now, suppose that besides the type of diet, you also want to consider the **level of physical activity**:
+
+🛋️ **Sedentary**  
+🚶 **Moderate**  
+🏋️ **Intense**  
+
+So now we have **two independent variables**:
+
+1️ -> **Type of diet**  
+2️ -> **Level of physical activity**  
+
+And **one dependent variable:** weight loss.
+
+In this case, we use **two-way ANOVA**, which tests three main things:
+
+1. **Main effect of factor 1 (Diet):** Does the diet type influence weight loss?  
+2. **Main effect of factor 2 (Exercise):** Does the level of exercise affect weight loss?  
+3. **Interaction effect:** Does the effectiveness of the diet depend on the level of physical activity?
+
+---
+
+### 📊 Example Interpretation
+
+For example, the test might show that:
+
+- 💪 People on a **high-protein diet** lose more weight when they perform **intense workouts**.  
+- 🥗 For the **Mediterranean diet**, the difference between exercise levels is **smaller**.
+
+These interactions help us better understand how **multiple factors work together** to influence the outcome.
+
