@@ -99,7 +99,8 @@ t = -10.81938599461596  |  p-value = 1.8508787160050282e-06
 | A | 6.5, 6.7, 7.0, 6.3, 7.2 | 6.74 |
 | B | 6.6, 6.8, 6.9, 6.5, 7.0 | 6.76 |
 
-```import numpy as np
+```python
+import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
 
