@@ -54,7 +54,10 @@ O **teste t** é um teste estatístico usado para determinar se há **diferença
 
 A fórmula é:
 
-T = x̄ - μ / s /√n
+$$
+T = \frac{\bar{x} - \mu}{s / \sqrt{n}}
+$$
+
 
 Onde:  
 - `x̄` = média da amostra  
@@ -169,7 +172,9 @@ OBS: O teorema do limite central: Garante que para uma amostra grande a distribu
 
 📊 **Formula:**
 
-F = Mean Square Between Groups\Mean Square Within Groups
+$$
+F = \frac{\text{Mean Square Between Groups}}{\text{Mean Square Within Groups}}
+$$
 
 ### 🔹 Types of Variation:
 - 🔸 **Between-group variation** (due to the factor)  
@@ -185,7 +190,10 @@ If the **F-statistic** is sufficiently large, it indicates that **at least one o
 
 📊 **Formula:**
 
-F = Mean Square Between Groups\Mean Square Within Groups
+$$
+F = \frac{\text{Mean Square Between Groups}}{\text{Mean Square Within Groups}}
+$$
+
 
 ### 🔹 Types of Variation:
 - **Main effect of Factor A** (due to the first independent variable)  
