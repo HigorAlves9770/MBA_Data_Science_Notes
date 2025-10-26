@@ -223,9 +223,10 @@ We want to know whether the type of diet actually affects the average weight los
 The **one-way ANOVA** is the right choice here because we have **one independent variable** (type of diet) with **three groups** and **one dependent variable** (weight loss).
 
 If the result is statistically significant (**p < 0.05**), we can conclude that **at least one diet is more effective than the others**.
+
 ---
 
-## 🔬 Pratical example with Two-Way ANOVA
+## 🔬 Practical Example with Two-Way ANOVA
 
 Now, suppose that besides the type of diet, you also want to consider the **level of physical activity**:
 
@@ -246,10 +247,6 @@ In this case, we use **two-way ANOVA**, which tests three main things:
 2. **Main effect of factor 2 (Exercise):** Does the level of exercise affect weight loss?  
 3. **Interaction effect:** Does the effectiveness of the diet depend on the level of physical activity?
 
----
-
-### 📊 Example Interpretation
-
 For example, the test might show that:
 
 - 💪 People on a **high-protein diet** lose more weight when they perform **intense workouts**.  
@@ -257,3 +254,169 @@ For example, the test might show that:
 
 These interactions help us better understand how **multiple factors work together** to influence the outcome.
 
+## Exemplo Prático em python: One Way
+
+### 🎯 Problema
+
+Um professor quer descobrir se **três métodos de ensino diferentes**  
+(**vídeo-aula**, **livro** e **tutoria**) afetam o desempenho dos alunos de forma significativa.
+
+### 🧩 Hipóteses
+
+- **H₀:** As médias das notas dos três métodos são iguais.  
+- **H₁:** Pelo menos um método tem média diferente.
+
+---
+
+### 💻 Código Python
+
+````python
+import pandas as pd
+import scipy.stats as stats
+
+# -------------------------------
+# 🎯 ANOVA One-Way — Exemplo prático
+# -------------------------------
+
+# Notas dos alunos por método de ensino
+video_aulas = [8.5, 7.8, 9.0, 8.2, 8.7]
+livros = [7.0, 6.8, 7.5, 7.2, 6.9]
+tutoria = [9.2, 8.8, 9.5, 9.0, 9.3]
+
+# Criando DataFrame para exibir melhor os dados
+df = pd.DataFrame({
+    'Video-Aula': video_aulas,
+    'Livro': livros,
+    'Tutoria': tutoria
+})
+
+print("========== DADOS DE ENTRADA ==========")
+print(df.describe().round(2))
+print("\n")
+
+# -------------------------------
+# 🧮 Realizando o teste ANOVA de uma via
+# -------------------------------
+f_stat, p_value = stats.f_oneway(video_aulas, livros, tutoria)
+
+print("========== RESULTADO ANOVA ONE-WAY ==========")
+print(f"Estatística F: {f_stat:.4f}")
+print(f"Valor-p: {p_value:.6f}\n")
+
+# -------------------------------
+# 📊 Interpretação detalhada
+# -------------------------------
+alpha = 0.05
+
+print("========== INTERPRETAÇÃO ==========")
+if p_value < alpha:
+    print("✅ Rejeitamos a hipótese nula (H₀).")
+    print("➡️ Conclusão: Pelo menos um dos métodos de ensino possui média de notas diferente dos outros.")
+    print("🔍 Isso indica que o método de ensino tem impacto significativo no desempenho dos alunos.")
+else:
+    print("❌ Não rejeitamos a hipótese nula (H₀).")
+    print("➡️ Conclusão: Não há evidências suficientes para afirmar que as médias são diferentes.")
+    print("🔍 Ou seja, o método de ensino não parece influenciar significativamente as notas.")
+
+# -------------------------------
+# 📋 Resumo final interpretativo
+# -------------------------------
+print("\n========== RESUMO FINAL ==========")
+print(f"🧠 Estatística F calculada: {f_stat:.4f}")
+print(f"🎯 Valor-p obtido: {p_value:.6f}")
+print(f"📏 Nível de significância (alpha): {alpha}")
+print(f"📘 Decisão: {'Rejeitar H₀' if p_value < alpha else 'Não rejeitar H₀'}")
+print(f"📈 Interpretação: {'Existe diferença significativa entre os grupos.' if p_value < alpha else 'As médias são estatisticamente iguais.'}")
+
+========== RESULTADO ANOVA ONE-WAY ==========
+Estatística F: 24.5214
+Valor-p: 0.000103
+
+✅ Rejeitamos a hipótese nula (H₀).
+➡️ Conclusão: Pelo menos um dos métodos de ensino possui média de notas diferente dos outros.
+🔍 O método de ensino tem impacto significativo no desempenho dos alunos.
+
+
+````
+
+##  Exemplo Prático em python: Two Way
+
+### 🎯 Problema
+
+O professor também quer saber se o **turno de estudo** (manhã ou tarde) influencia nas notas, além do método de ensino.  
+Ou seja, ele quer avaliar **dois fatores**:
+
+1. Método de ensino  
+2. Turno (manhã/noite)  
+
+E verificar se há **interação entre eles**.
+
+---
+
+### 🧩 Hipóteses
+
+- **H₀₁:** As médias são iguais entre os métodos.  
+- **H₀₂:** As médias são iguais entre os turnos.  
+- **H₀₃:** Não há interação entre método e turno.
+
+---
+
+### 💻 Código Python
+
+````python
+import pandas as pd
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+# -------------------------------
+# 🎯 Exemplo: Efeito do método de ensino e do turno nas notas dos alunos
+# -------------------------------
+data = {
+    'Metodo': ['Video', 'Video', 'Video', 'Livro', 'Livro', 'Livro', 'Tutoria', 'Tutoria', 'Tutoria'] * 2,
+    'Turno': ['Manha'] * 9 + ['Tarde'] * 9,
+    'Nota': [8.5, 8.2, 8.7, 7.0, 7.3, 7.1, 9.0, 8.9, 9.2,
+             8.8, 8.5, 8.9, 6.8, 7.1, 7.0, 9.1, 9.0, 9.3]
+}
+
+df = pd.DataFrame(data)
+
+# -------------------------------
+# 🧮 ANOVA Two-Way
+# -------------------------------
+modelo = ols('Nota ~ C(Metodo) + C(Turno) + C(Metodo):C(Turno)', data=df).fit()
+anova_resultado = sm.stats.anova_lm(modelo, typ=2)
+
+print("========== RESULTADO ANOVA TWO-WAY ==========")
+print(anova_resultado, "\n")
+
+# -------------------------------
+# 📊 Interpretação
+# -------------------------------
+print("========== INTERPRETAÇÃO ==========")
+alpha = 0.05
+for fator in anova_resultado.index:
+    p = anova_resultado.loc[fator, 'PR(>F)']
+    if p < alpha:
+        print(f"✅ {fator}: efeito significativo (p = {p:.4f})")
+    else:
+        print(f"❌ {fator}: sem efeito significativo (p = {p:.4f})")
+
+print("\nConclusão:")
+print("➡️ O teste avalia se o método de ensino, o turno, ou a combinação dos dois influenciam as notas.")
+
+========== RESULTADO ANOVA TWO-WAY ==========
+                          sum_sq    df         F    PR(>F)
+C(Metodo)              14.823333   2.0  90.06122  0.000000
+C(Turno)                0.100000   1.0   1.21519  0.285641
+C(Metodo):C(Turno)      0.033333   2.0   0.20253  0.818394
+Residual                1.317778  12.0       NaN       NaN
+
+========== INTERPRETAÇÃO ==========
+✅ C(Metodo): efeito significativo (p = 0.0000)
+❌ C(Turno): sem efeito significativo (p = 0.2856)
+❌ C(Metodo):C(Turno): sem efeito significativo (p = 0.8184)
+
+➡️ O método de ensino afeta significativamente as notas dos alunos, 
+mas o turno (manhã ou tarde) e a interação entre eles não tiveram impacto relevante.
+
+````
